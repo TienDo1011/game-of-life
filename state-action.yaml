@@ -1,20 +1,12 @@
-App:
+RecipeBook:
   state:
-    currentSeries
-    playerSeries
-    isOn
-    strict
-    player
-    lost
+    recipeBook
   actions:
-    PLAYER_CLICK
-    TOGGLE_ON
-    TOGGLE_STRICT
-    SIMON_CLICK
-
-
-
-PLAYER_CLICK: 
-  strict on
-  strict off
+    ADD_RECIPE
+Recipe:
+  state:
+    recipe
+  action:
+    EDIT_RECIPE
+    DELETE_RECIPE
   

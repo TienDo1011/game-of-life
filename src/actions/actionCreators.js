@@ -1,19 +1,19 @@
 import * as types from './actionTypes';
 
-export const playerClick = color => ({
-  type: types.PLAYER_CLICK,
-  color,
+export const addRecipe = (title, ingredients) => ({
+  type: types.ADD_RECIPE,
+  title,
+  ingredients,
 });
 
-export const toggleOn = () => ({
-  type: types.TOGGLE_ON,
+export const editRecipe = (id, title, ingredients) => ({
+  type: types.EDIT_RECIPE,
+  id,
+  title,
+  ingredients,
 });
 
-export const toggleStrict = () => ({
-  type: types.TOGGLE_STRICT,
-});
-
-export const simonClick = color => ({
-  type: types.SIMON_CLICK,
-  color,
+export const deleteRecipe = id => ({
+  type: types.DELETE_RECIPE,
+  id,
 });

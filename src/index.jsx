@@ -1,19 +1,12 @@
 /**
-state = {
-  currentSeries
-  playerSeries
-  isOn
-  strict
-  player
-  lost
-}
+state = [{title: String, ingredients: Array}]
  */
 
 import { createStore } from 'redux';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import App from './components/containers/App.jsx';
+import RecipeBook from './components/containers/RecipeBook.jsx';
 import simon from './reducers';
 
 /* eslint-disable no-underscore-dangle */
@@ -26,7 +19,7 @@ const store = createStore(
 const render = () => {
   ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <RecipeBook />
     </Provider>,
     document.getElementById('root'),
   );

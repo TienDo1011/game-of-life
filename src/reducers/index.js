@@ -1,53 +1,43 @@
 import * as types from '../actions/actionTypes';
 
-const initialState = {
-  currentSeries: [],
-  playerSeries: [],
-  isOn: false,
-  strict: false,
-  player: false,
-  lost: false,
-};
+const initialState = [
+  {
+    title: 'a',
+    ingredients: ['a1', 'a2', 'a3'],
+  },
+  {
+    title: 'b',
+    ingredients: ['b1', 'b2', 'b3'],
+  },
+];
 
-export default function simon(state = initialState, action) {
+let newState = [];
+
+export default function recipeBook(state = initialState, action) {
   switch (action.type) {
-    case types.TOGGLE_ON:
-      return {
-        ...initialState,
-        isOn: !state.isOn,
-      };
-    case types.TOGGLE_STRICT:
-      return {
+    case types.ADD_RECIPE:
+      newState = [
         ...state,
-        strict: !state.strict,
-      };
-    case types.SIMON_CLICK:
-      return {
-        ...state,
-        currentSeries: [...state.currentSeries, action.color],
-        playerSeries: [],
-        player: true,
-      };
-    case types.PLAYER_CLICK:
-      if (state.strict && state.currentSeries[state.playerSeries.length] !== action.color) {
-        return {
-          ...state,
-          currentSeries: [],
-          playerSeries: [],
-          lost: true,
-          isOn: false,
-        };
-      } else if (!state.strict && state.currentSeries[state.playerSeries.length] !== action.color) {
-        return {
-          ...state,
-          playerSeries: [],
-          lost: true,
-        };
-      }
-      return {
-        ...state,
-        playerSeries: [...state.playerSeries, action.color],
-      };
+        {
+          title: action.title,
+          ingredients: action.ingredients,
+        },
+      ];
+      localStorage.setItem('recipeBook', newState);
+      return newState;
+    case types.EDIT_RECIPE:
+      newState = [...state];
+      newState[action.id].title = action.title;
+      newState[action.id].ingredients = action.ingredients;
+      localStorage.setItem('recipeBook', newState);
+      return newState;
+    case types.DELETE_RECIPE:
+      newState = [
+        ...state.slice(0, action.id),
+        ...state.slice(action.id + 1),
+      ];
+      localStorage.setItem('recipeBook', newState);
+      return newState;
     default:
       return state;
   }

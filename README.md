@@ -1,13 +1,11 @@
-## Pomodoro app
+## Recipe box - project from FCC
 
-A basic pomodoro written with Javascript (ES2015), React.js, Redux & Webpack.
+A basic recipe notebook written with Javascript (ES2015), React.js, Redux, Webpack & localStorage.
 
 Function:
 
-* Set break time
-* Set Pomodoro time
-* Set long break time
-* Set Iteration
+* Add recipe
+* Recipe list consistency under page reload
 
 ### Development
 
