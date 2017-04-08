@@ -14,7 +14,7 @@ class SingleRecipe extends Component {
   }
 
   deleteRecipe() {
-    this.props.deleteRecipe(this.props.key);
+    this.props.deleteRecipe(this.props.id);
   }
 
   editRecipe() {
@@ -46,7 +46,7 @@ class SingleRecipe extends Component {
           <Button onClick={this.editRecipe}>Edit</Button>
         </Panel>
         <ModalComponent
-          showModel={this.state.showEditModel}
+          showModal={this.state.showEditModel}
           header="Edit Recipe"
           title={p.title}
           ingredients={p.ingredients}

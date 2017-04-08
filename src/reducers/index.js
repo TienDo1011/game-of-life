@@ -1,13 +1,13 @@
 import * as types from '../actions/actionTypes';
 
-const initialState = [
+const initialState = JSON.parse(localStorage.getItem('recipeBook')) || [
   {
-    title: 'a',
-    ingredients: ['a1', 'a2', 'a3'],
+    title: 'Pumpkin Pie',
+    ingredients: ['Pumpkin Puree', 'Sweetened Condensed Milk', 'Eggs', 'Pumpkin Pie Spice', 'Pie Crust'],
   },
   {
-    title: 'b',
-    ingredients: ['b1', 'b2', 'b3'],
+    title: 'Spaghetti',
+    ingredients: ['Noodles', 'Tomato Sauce', '(Optional) Meatballs'],
   },
 ];
 
@@ -20,23 +20,23 @@ export default function recipeBook(state = initialState, action) {
         ...state,
         {
           title: action.title,
-          ingredients: action.ingredients,
+          ingredients: action.ingredients.split(','),
         },
       ];
-      localStorage.setItem('recipeBook', newState);
+      localStorage.setItem('recipeBook', JSON.stringify(newState));
       return newState;
     case types.EDIT_RECIPE:
       newState = [...state];
       newState[action.id].title = action.title;
-      newState[action.id].ingredients = action.ingredients;
-      localStorage.setItem('recipeBook', newState);
+      newState[action.id].ingredients = Array.isArray(action.ingredients) ? action.ingredients : action.ingredients.split(',');
+      localStorage.setItem('recipeBook', JSON.stringify(newState));
       return newState;
     case types.DELETE_RECIPE:
       newState = [
         ...state.slice(0, action.id),
         ...state.slice(action.id + 1),
       ];
-      localStorage.setItem('recipeBook', newState);
+      localStorage.setItem('recipeBook', JSON.stringify(newState));
       return newState;
     default:
       return state;

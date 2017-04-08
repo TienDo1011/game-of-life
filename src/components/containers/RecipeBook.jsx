@@ -38,6 +38,7 @@ class RecipeBook extends Component {
                   return (
                     <SingleRecipe
                       key={index}
+                      id={index}
                       title={recipe.title}
                       ingredients={recipe.ingredients}
                       editRecipe={this.props.editRecipe}
