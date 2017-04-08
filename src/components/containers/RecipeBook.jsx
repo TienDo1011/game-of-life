@@ -37,7 +37,7 @@ class RecipeBook extends Component {
                 {this.props.recipeBook.map((recipe, index) => {
                   return (
                     <SingleRecipe
-                      id={index}
+                      key={index}
                       title={recipe.title}
                       ingredients={recipe.ingredients}
                       editRecipe={this.props.editRecipe}
@@ -50,8 +50,6 @@ class RecipeBook extends Component {
               <ModalComponent
                 showModal={this.state.showAddModal}
                 header="Add recipe"
-                title=""
-                ingredients=""
                 addRecipe={this.props.addRecipe}
                 close={this.closeAddModal}
               />

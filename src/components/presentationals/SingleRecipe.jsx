@@ -14,7 +14,7 @@ class SingleRecipe extends Component {
   }
 
   deleteRecipe() {
-    this.props.deleteRecipe(this.props.id);
+    this.props.deleteRecipe(this.props.key);
   }
 
   editRecipe() {
@@ -36,9 +36,9 @@ class SingleRecipe extends Component {
         <Panel collapsible header={p.title}>
           Ingredients
           <ListGroup fill>
-            {p.ingredients.map((ingredient) => {
+            {p.ingredients.map((ingredient, index) => {
               return (
-                <ListGroupItem>{ingredient}</ListGroupItem>
+                <ListGroupItem key={index}>{ingredient}</ListGroupItem>
               );
             })}
           </ListGroup>
