@@ -15,21 +15,27 @@ class ModalComponent extends Component {
   }
   
   addRecipe() {
-    const recipeName = this.textInput.value;
-    const ingredients = this.textAreaInput.value;
+    const recipeName = this.textInput.props.value;
+    const ingredients = this.textAreaInput.props.value;
     this.props.addRecipe(recipeName, ingredients);
+    this.setState({
+      recipeTitle: '',
+      recipeIngredients: '',
+    });
+    this.props.close();
   }
 
   editRecipe() {
-    const recipeName = this.textInput.value;
-    const ingredients = this.textAreaInput.value;
+    const recipeName = this.textInput.props.value;
+    const ingredients = this.textAreaInput.props.value;
     const id = this.props.id;
     this.props.editRecipe(id, recipeName, ingredients);
+    this.props.close();
   }
 
   handleChange(e) {
     this.setState({
-      [e.target.type === 'text' ? 'recipeTitle' : 'recipeIngredients']: e.target.value,
+      [e.target.getAttribute('type') === 'text' ? 'recipeTitle' : 'recipeIngredients']: e.target.value,
     });
   }
   
