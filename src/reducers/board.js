@@ -11,7 +11,7 @@ export default function board(state = initialState, action) {
       const newState = JSON.parse(JSON.stringify(state));
       newState[action.x][action.y] = { status: !newState[action.x][action.y]};
       return newState;
-    case types.EDIT_RECIPE:
+    case types.RANDOMIZE:
       newState = [...state];
       newState[action.id].title = action.title;
       newState[action.id].ingredients = Array.isArray(action.ingredients) ? action.ingredients : action.ingredients.split(',');
