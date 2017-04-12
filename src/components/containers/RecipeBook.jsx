@@ -1,9 +1,13 @@
-import React, { Component } from 'react';
-import { Grid, Row, Col, PanelGroup, Button } from 'react-bootstrap';
-import ModalComponent from '../presentationals/Modal.jsx';
-import SingleRecipe from '../presentationals/SingleRecipe.jsx';
-import { connect } from 'react-redux';
-import { addRecipe, editRecipe, deleteRecipe } from '../../actions/actionCreators';
+import React, { Component } from "react";
+import { Grid, Row, Col, PanelGroup, Button } from "react-bootstrap";
+import ModalComponent from "../presentationals/Modal.jsx";
+import SingleRecipe from "../presentationals/SingleRecipe.jsx";
+import { connect } from "react-redux";
+import {
+  addRecipe,
+  editRecipe,
+  deleteRecipe
+} from "../../actions/actionCreators";
 
 class RecipeBook extends Component {
   constructor() {
@@ -11,19 +15,19 @@ class RecipeBook extends Component {
     this.closeAddModal = this.closeAddModal.bind(this);
     this.showAddModal = this.showAddModal.bind(this);
     this.state = {
-      showAddModal: false,
+      showAddModal: false
     };
   }
 
   closeAddModal() {
     this.setState({
-      showAddModal: false,
+      showAddModal: false
     });
   }
 
   showAddModal() {
     this.setState({
-      showAddModal: true,
+      showAddModal: true
     });
   }
 
@@ -47,13 +51,17 @@ class RecipeBook extends Component {
                   );
                 })}
               </PanelGroup>
-              <Button bsStyle="success" onClick={this.showAddModal}>Add recipe</Button>
+              <Button bsStyle="success" onClick={this.showAddModal}>
+                Add recipe
+              </Button>
               <ModalComponent
                 showModal={this.state.showAddModal}
                 header="Add recipe"
                 addRecipe={this.props.addRecipe}
                 close={this.closeAddModal}
               />
+              ;
+
             </Col>
           </Row>
         </Grid>
@@ -63,13 +71,14 @@ class RecipeBook extends Component {
 }
 
 const mapStateToProps = state => ({
-  recipeBook: state,
+  recipeBook: state
 });
 
 const mapDispatchToProps = dispatch => ({
   addRecipe: (title, ingredients) => dispatch(addRecipe(title, ingredients)),
-  editRecipe: (id, title, ingredients) => dispatch(editRecipe(id, title, ingredients)),
-  deleteRecipe: id => dispatch(deleteRecipe(id)),
+  editRecipe: (id, title, ingredients) =>
+    dispatch(editRecipe(id, title, ingredients)),
+  deleteRecipe: id => dispatch(deleteRecipe(id))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(RecipeBook);

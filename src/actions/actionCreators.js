@@ -1,19 +1,23 @@
 import * as types from './actionTypes';
 
-export const addRecipe = (title, ingredients) => ({
-  type: types.ADD_RECIPE,
-  title,
-  ingredients,
+export const toggleAlive = (x, y) => ({
+  type: types.TOGGLE_ALIVE,
+  x,
+  y,
 });
 
-export const editRecipe = (id, title, ingredients) => ({
-  type: types.EDIT_RECIPE,
-  id,
-  title,
-  ingredients,
+export const randomize = () => ({
+  type: types.RANDOMIZE,
 });
 
-export const deleteRecipe = id => ({
-  type: types.DELETE_RECIPE,
-  id,
+export const CLEAR = () => ({
+  type: types.CLEAR,
+});
+
+export const TOGGLE_PLAY = () => ({
+  type: types.TOGGLE_PLAY,
+});
+
+export const NEXTTICK = () => ({
+  type: types.NEXTTICK,
 });

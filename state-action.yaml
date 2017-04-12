@@ -1,12 +1,16 @@
-RecipeBook:
+Board:
   state:
-    recipeBook
+    status
   actions:
-    ADD_RECIPE
-Recipe:
+   TOGGLE_ALIVE
+Control:
   state:
-    recipe
+    isRunning
   action:
-    EDIT_RECIPE
-    DELETE_RECIPE
-  
+    RANDOMIZE
+    CLEAR
+    TOGGLE_PLAY
+    NEXTTICK
+Counter:
+  state:
+    generation
