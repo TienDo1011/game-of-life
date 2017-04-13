@@ -10,14 +10,14 @@ export const randomize = () => ({
   type: types.RANDOMIZE,
 });
 
-export const CLEAR = () => ({
+export const clear = () => ({
   type: types.CLEAR,
 });
 
-export const TOGGLE_PLAY = () => ({
+export const togglePlay = () => ({
   type: types.TOGGLE_PLAY,
 });
 
-export const NEXTTICK = () => ({
+export const nextTick = () => ({
   type: types.NEXTTICK,
 });
