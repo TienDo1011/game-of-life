@@ -1,11 +1,14 @@
-## Recipe box - project from FCC
+## Game of life - project from FCC
 
-A basic recipe notebook written with Javascript (ES2015), React.js, Redux, Webpack & localStorage.
+[Conway's Game of life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life) implementation written with Javascript (ES2015), React.js, Redux, Webpack;
 
 Function:
 
-* Add recipe
-* Recipe list consistency under page reload
+* Randomize initial board
+* Clear all life on board
+* Play/Pause
+* step forward to the next generation
+* Generation count
 
 ### Development
 
