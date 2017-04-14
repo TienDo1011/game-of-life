@@ -14,11 +14,10 @@ class Square extends Component {
 
   render() {
     const p = this.props;
-    const color = p.status ? "warning" : "";
+    const color = p.status ? "yellow" : "white";
     return (
-      <div>
-        <Button bsStyle={color} onClick={this.toggleAlive} />
-      </div>
+      <td style={{ backgroundColor: color, width: '20px', height: '20px' }} onClick={this.toggleAlive} >
+      </td>
     );
   }
 }

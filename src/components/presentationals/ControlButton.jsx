@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Glyphicon } from 'react-bootstrap';
 
 class ControlButton extends Component {
   render() {
     return (
-      <div>
+      <span>
         <Button bsStyle="primary" onClick={this.props.handleClick}>
+          <Glyphicon glyph={this.props.glyph} />
           {this.props.text}
         </Button>
-      </div>
+      </span>
     );
   }
 }

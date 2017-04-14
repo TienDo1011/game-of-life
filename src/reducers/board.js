@@ -10,7 +10,7 @@ export default function board(state = initialState, action) {
   switch (action.type) {
     case types.TOGGLE_ALIVE:
       newState = JSON.parse(JSON.stringify(state));
-      newState[action.x][action.y] = { status: !newState[action.x][action.y]};
+      newState[action.x][action.y] = { status: !newState[action.x][action.y].status };
       return newState;
     case types.RANDOMIZE:
       return grid.initialGrid(HEIGHT, WIDTH, true);

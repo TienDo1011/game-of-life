@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export const initialGrid = (height, width, makeRandom = false) => {
   const grid = [];
   for (let i = 0; i < height; i++) {
@@ -17,21 +19,20 @@ export const initialGrid = (height, width, makeRandom = false) => {
 };
 
 const calculateNeighbors = (board, x, y) => {
-  let upperRow, lowerRow, leftColumn, rightColumn;
-  let count;
-  upperRow = (x === 0) ? (board.length - 1) : (x - 1);
-  lowerRow = (x === (board.length - 1)) ? 0 : (x + 1);
-  leftColumn = (y === 0) ? (board[0].length - 1) : (y - 1);
-  rightColumn = (y === (board[0].length - 1)) ? 0 : (y + 1);
+  let count = 0;
+  const upperRow = (x === 0) ? (board.length - 1) : (x - 1);
+  const lowerRow = (x === (board.length - 1)) ? 0 : (x + 1);
+  const leftColumn = (y === 0) ? (board[0].length - 1) : (y - 1);
+  const rightColumn = (y === (board[0].length - 1)) ? 0 : (y + 1);
 
   const allAdjacentPosition = [
-    {x: upperRow, y: leftColumn}, {x: upperRow, y}, {x: upperRow, y: rightColumn},
-    {x, y: leftColumn}, {x, y: rightColumn},
-    {x: lowerRow, y: leftColumn}, {x: lowerRow, y}, {x: lowerRow, y: rightColumn},
+    { a: upperRow, b: leftColumn }, { a: upperRow, b: y }, { a: upperRow, b: rightColumn },
+    { a: x, b: leftColumn }, { a: x, b: rightColumn },
+    { a: lowerRow, b: leftColumn }, { a: lowerRow, b: y }, { a: lowerRow, b: rightColumn },
   ];
 
-  allAdjacentPosition.forEach(({x, y}) => {
-    if (board[x][y].status === true) {
+  allAdjacentPosition.forEach(({ a, b }) => {
+    if (board[a][b].status === true) {
       count += 1;
     }
   });
@@ -41,7 +42,7 @@ const calculateNeighbors = (board, x, y) => {
 export const advanceGrid = (board) => {
   const height = board.length;
   const width = board[0].length;
-  const newBoard = initialGrid(board.length, board[0].length);
+  const newBoard = initialGrid(height, width);
   for (let i = 0; i < height; i++) {
     for (let j = 0; j < width; j++) {
       const isAlive = board[i][j].status;

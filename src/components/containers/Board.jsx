@@ -1,3 +1,4 @@
+import shortid from 'shortid';
 import React, { Component } from "react";
 import Square from "../presentationals/Square.jsx";
 import { connect } from "react-redux";
@@ -7,27 +8,33 @@ class Board extends Component {
   render() {
     return (
       <div>
-        <table style={{ padding: 0, margin: 0, border: 1 }}>
+        <style>{`
+          table, tr, td{
+          border:1px solid black;
+          }
+        `}</style>
+        <table>
+          <tbody>
           {this.props.board.map((row, xIndex) => {
             return (
-              <tr>
+              <tr key={shortid.generate()}>
               {
                 row.map((obj, yIndex) => {
                   return (
-                    <td>
                       <Square
+                        key={shortid.generate()}
                         status={obj.status}
                         x={xIndex}
                         y={yIndex}
                         toggleAlive={this.props.toggleAlive}
                       />
-                    </td>
                   )
                 })
               }
             </tr>
             )
           })}
+          </tbody>
         </table>
       </div>
     );

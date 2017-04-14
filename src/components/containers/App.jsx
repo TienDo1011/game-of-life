@@ -11,10 +11,14 @@ class App extends Component {
       <div>
         <Grid>
           <Row>
+            <h1> Game of life </h1>
+          </Row>
+          <Row>
             <Col>
               <Board />
             </Col>
           </Row>
+          <br />
           <Row>
             <Controls />
             <CounterContainer />

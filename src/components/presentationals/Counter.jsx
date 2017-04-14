@@ -4,9 +4,9 @@ import { Button } from 'react-bootstrap';
 class Counter extends Component {
   render() {
     return (
-      <div>
+      <span>
         <Button bsStyle="danger">{this.props.count}</Button>
-      </div>
+      </span>
     );
   }
 }

@@ -13,7 +13,7 @@ class Controls extends Component {
   constructor() {
     super();
     this.interval;
-    this.TIME = 1000;
+    this.TIME = 300;
     this.randomize = this.randomize.bind(this);
     this.clear = this.clear.bind(this);
     this.togglePlay = this.togglePlay.bind(this);
@@ -36,25 +36,30 @@ class Controls extends Component {
   togglePlay() {
     if (this.props.gameState) {
       clearInterval(this.interval);
+      this.props.togglePlay();
     } else {
       this.interval = setInterval(this.props.nextTick, this.TIME);
+      this.props.togglePlay();
     }
   }
 
   render() {
     return (
       <div>
-        <ButtonGroup>
-          <Col xs={8}>
-            <ControlButton handleClick={this.randomize} text="Randomize" />
+        <Col xs={8}>
+          <ButtonGroup>
+            <ControlButton handleClick={this.randomize} glyph="random" />
             <ControlButton handleClick={this.clear} text="Clear" />
-            <ControlButton handleClick={this.togglePlay} text="Play/Pause" />
+            <ControlButton
+              handleClick={this.togglePlay}
+              glyph={this.props.gameState ? 'pause' : 'play'}
+            />
             <ControlButton
               handleClick={this.props.nextTick}
-              text="Step-Forward"
+              glyph="step-forward"
             />
-          </Col>
-        </ButtonGroup>
+          </ButtonGroup>
+        </Col>
       </div>
     );
   }
